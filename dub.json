@@ -1,0 +1,26 @@
+{
+	"authors": [
+		"smug"
+	],
+	"copyright": "Copyright © 2020, smug",
+	"dependencies": {
+		"zero-memory": "~>0.2.1"
+	},
+	"description": "-disable-linker-strip-dead",
+	"dflags-ldc": [
+		"-O3",
+		"-Oz",
+		"-strip-debug",
+		"-flto=full",
+		"-stats"
+	],
+	"buildOptions": [
+		"inline",
+		"optimize",
+		"releaseMode"
+	],
+	"license": "proprietary",
+	"name": "re_new",
+	"targetPath": "builds/",
+	"targetType": "executable"
+}
