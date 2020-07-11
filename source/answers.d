@@ -1,33 +1,32 @@
-
 module smug.answers;
 
-import std.string: strip;
+import std.string : strip;
+
 struct ILOVECOCKS(string value)
 {
-    alias get this;
-    string get() @property
-    {
-		string q;
-		foreach(c; value)
-      q ~= c^0x69;
-			// q ~= c + 1;
+  alias get this;
+  string get() @property
+  {
+    string q;
+    foreach (c; value)
+      q ~= c ^ 0x69;
+    // q ~= c + 1;
     return q;
-    }
+  }
 }
 
 template loldongs(string value)
 {
-    string process()
-    {
-		string q;
-		foreach(c; value)
-			// q ~= c - 1;
-      q ~= c^0x69;
+  string process()
+  {
+    string q;
+    foreach (c; value) // q ~= c - 1;
+      q ~= c ^ 0x69;
     return q;
-    }
-    enum loldongs = ILOVECOCKS!process();
-}
+  }
 
+  enum loldongs = ILOVECOCKS!process();
+}
 
 static skid0 = loldongs!"Agent odinz";
 static skid1 = loldongs!"Agent botnetwZ";
