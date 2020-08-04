@@ -1,131 +1,136 @@
-module smug.answers;
+pragma(LDC_no_moduleinfo);
+pragma(LDC_no_typeinfo);
 
-import std.string : strip;
 
-struct ILOVECOCKS(string value)
+template Crypt(string value)
 {
-  alias get this;
-  string get() @property
-  {
-    string q;
-    foreach (c; value)
-      q ~= c ^ 0x69;
-    // q ~= c + 1;
-    return q;
-  }
-}
+  auto k1 = __TIME__[4];
+  auto k2 = __TIME__[7];
 
-template loldongs(string value)
-{
-  string process()
+  struct Dongs(string value)
   {
-    string q;
-    foreach (c; value) // q ~= c - 1;
-      q ~= c ^ 0x69;
-    return q;
+    alias get this;
+    string get() @property const
+    {
+      string q;
+      foreach (i, c; value)
+        q ~= c ^ (k1 + i % (1 + k2));
+      return q;
+    }
   }
 
-  enum loldongs = ILOVECOCKS!process();
+  string encrypt()
+  {
+    string q;
+    foreach (i, c; value)
+      q ~= c ^ (k1 + i % (1 + k2));
+    return q;
+  }
+
+  enum Crypt = Dongs!encrypt();
 }
 
-static skid0 = loldongs!"Agent odinz";
-static skid1 = loldongs!"Agent botnetwZ";
-static skid2 = loldongs!"Agent Pepur";
-static skid3 = loldongs!"Agent aleksCha";
-static skid4 = loldongs!"Agent nono";
-static skid5 = loldongs!"Agent bo9";
-static skid6 = loldongs!"Agent wZbz";
-static skid7 = loldongs!"Agent bopur";
-static skid8 = loldongs!"Agent bokake";
-static skid9 = loldongs!"Agent Peo_o";
-static skid10 = loldongs!"Agent o_oaleks";
-static skid11 = loldongs!"Agent kakeSmoking";
-static skid12 = loldongs!"Agent boPe";
-static skid13 = loldongs!"Agent jezzy";
-static skid14 = loldongs!"Agent botnetSmoking";
-static skid15 = loldongs!"Agent jeil";
-static skid16 = loldongs!"Agent nobo";
-static skid17 = loldongs!"Agent coNora";
-static skid18 = loldongs!"Agent noPe";
-static skid19 = loldongs!"Agent noaleks";
-static skid20 = loldongs!"Agent jeroy";
-static skid21 = loldongs!"Agent maritiz";
-static skid22 = loldongs!"Agent botnetkriste";
-static skid23 = loldongs!"Agent o_oNora";
-static skid24 = loldongs!"Agent purje";
-static skid25 = loldongs!"Agent noco";
-static skid26 = loldongs!"Agent jebz";
-static skid27 = loldongs!"Agent Ingeup";
-static skid28 = loldongs!"Agent bono";
-static skid29 = loldongs!"Agent saurus9";
-static skid30 = loldongs!"Agent sauruskriste";
-static skid31 = loldongs!"Agent purkake";
-static skid32 = loldongs!"Agent NoraInge";
-static skid33 = loldongs!"Agent aleksno";
-static skid34 = loldongs!"Agent upkongen";
-static skid35 = loldongs!"Agent hacwZ";
-static skid36 = loldongs!"Agent Chamariti";
-static skid37 = loldongs!"Agent botneto_o";
-static skid38 = loldongs!"Agent maritizzy";
-static skid39 = loldongs!"Agent kongenbo";
-static skid40 = loldongs!"Agent Gunil";
-static skid41 = loldongs!"Agent odinSmoking";
-static skid42 = loldongs!"Agent bolbz";
-static skid43 = loldongs!"Agent purbotnet";
-static skid44 = loldongs!"Agent bzsaurus";
-static skid45 = loldongs!"Agent bolmariti";
-static skid46 = loldongs!"Agent GunPe";
-static skid47 = loldongs!"Agent alekskongen";
-static skid48 = loldongs!"Agent royroy";
-static skid49 = loldongs!"Agent bzpur";
-static skid50 = loldongs!"Agent kongenInge";
-static skid51 = loldongs!"Agent Smokingodin";
-static skid52 = loldongs!"Agent o_oNora";
-static skid53 = loldongs!"Agent o_o9";
-static skid54 = loldongs!"Agent odinodin";
-static skid55 = loldongs!"Agent bobo";
-static skid56 = loldongs!"Agent hachac";
-static skid57 = loldongs!"Agent Smokingkake";
-static skid58 = loldongs!"Agent Ingeodin";
-static skid59 = loldongs!"Agent Smokingup";
-static skid60 = loldongs!"Agent o_oco";
-static skid61 = loldongs!"Agent zGun";
-static skid62 = loldongs!"Agent IngeCha";
-static skid63 = loldongs!"Agent Ingepur";
-static skid64 = loldongs!"Agent botnetz";
-static skid65 = loldongs!"Agent Gun9";
-static skid66 = loldongs!"Agent zzyil";
-static skid67 = loldongs!"Agent kristeno";
-static skid68 = loldongs!"Agent maritibz";
-static skid69 = loldongs!"Agent Gunup";
-static skid70 = loldongs!"Agent kongenil";
-static skid71 = loldongs!"Agent Ingezzy";
-static skid72 = loldongs!"Agent Noraz";
-static skid73 = loldongs!"Agent 9botnet";
-static skid74 = loldongs!"Agent bolpur";
-static skid75 = loldongs!"Agent bolzzy";
-static skid76 = loldongs!"Agent alekswZ";
-static skid77 = loldongs!"Agent ilbotnet";
-static skid78 = loldongs!"Agent odinaleks";
-static skid79 = loldongs!"Agent ilo_o";
-static skid80 = loldongs!"Agent bolsaurus";
-static skid81 = loldongs!"Agent odinz";
-static skid82 = loldongs!"Agent wZkongen";
-static skid83 = loldongs!"Agent coz";
-static skid84 = loldongs!"Agent botnetmariti";
-static skid85 = loldongs!"Agent noil";
-static skid86 = loldongs!"Agent coz";
-static skid87 = loldongs!"Agent bokongen";
-static skid88 = loldongs!"Agent Gunkongen";
-static skid89 = loldongs!"Agent upz";
-static skid90 = loldongs!"Agent kongenInge";
-static skid91 = loldongs!"Agent zzyInge";
-static skid92 = loldongs!"Agent Pulidipper";
-static skid93 = loldongs!"Agent Pebo";
-static skid94 = loldongs!"Agent Gun9";
-static skid95 = loldongs!"Agent wZkriste";
-static skid96 = loldongs!"Agent kristebol";
-static skid97 = loldongs!"Agent wZPe";
-static skid98 = loldongs!"Agent noGun";
-static skid99 = loldongs!"Agent bolmariti";
-static skidflag = loldongs!"{ ILOVECOCKS } ";
+// Stolen names from a previous crackme cause i'm lazy
+// https://github.com/tghack/tg20hack/blob/master/re/combat_ship3/src/answers.h
+
+static skid0 = Crypt!"odinz";
+static skid1 = Crypt!"botnetwZ";
+static skid2 = Crypt!"Pepur";
+static skid3 = Crypt!"aleksCha";
+static skid4 = Crypt!"nono";
+static skid5 = Crypt!"bo9";
+static skid6 = Crypt!"wZbz";
+static skid7 = Crypt!"bopur";
+static skid8 = Crypt!"bokake";
+static skid9 = Crypt!"Peo_o";
+static skid10 = Crypt!"o_oaleks";
+static skid11 = Crypt!"kakeSmoking";
+static skid12 = Crypt!"boPe";
+static skid13 = Crypt!"jezzy";
+static skid14 = Crypt!"botnetSmoking";
+static skid15 = Crypt!"jeil";
+static skid16 = Crypt!"nobo";
+static skid17 = Crypt!"coNora";
+static skid18 = Crypt!"noPe";
+static skid19 = Crypt!"noaleks";
+static skid20 = Crypt!"jeroy";
+static skid21 = Crypt!"maritiz";
+static skid22 = Crypt!"botnetkriste";
+static skid23 = Crypt!"o_oNora";
+static skid24 = Crypt!"purje";
+static skid25 = Crypt!"noco";
+static skid26 = Crypt!"jebz";
+static skid27 = Crypt!"Ingeup";
+static skid28 = Crypt!"bono";
+static skid29 = Crypt!"saurus9";
+static skid30 = Crypt!"sauruskriste";
+static skid31 = Crypt!"purkake";
+static skid32 = Crypt!"NoraInge";
+static skid33 = Crypt!"aleksno";
+static skid34 = Crypt!"upkongen";
+static skid35 = Crypt!"hacwZ";
+static skid36 = Crypt!"Chamariti";
+static skid37 = Crypt!"botneto_o";
+static skid38 = Crypt!"maritizzy";
+static skid39 = Crypt!"kongenbo";
+static skid40 = Crypt!"Gunil";
+static skid41 = Crypt!"odinSmoking";
+static skid42 = Crypt!"bolbz";
+static skid43 = Crypt!"purbotnet";
+static skid44 = Crypt!"bzsaurus";
+static skid45 = Crypt!"bolmariti";
+static skid46 = Crypt!"GunPe";
+static skid47 = Crypt!"alekskongen";
+static skid48 = Crypt!"royroy";
+static skid49 = Crypt!"bzpur";
+static skid50 = Crypt!"kongenInge";
+static skid51 = Crypt!"Smokingodin";
+static skid52 = Crypt!"o_oNora";
+static skid53 = Crypt!"o_o9";
+static skid54 = Crypt!"odinodin";
+static skid55 = Crypt!"bobo";
+static skid56 = Crypt!"hachac";
+static skid57 = Crypt!"Smokingkake";
+static skid58 = Crypt!"Ingeodin";
+static skid59 = Crypt!"Smokingup";
+static skid60 = Crypt!"o_oco";
+static skid61 = Crypt!"zGun";
+static skid62 = Crypt!"IngeCha";
+static skid63 = Crypt!"Ingepur";
+static skid64 = Crypt!"botnetz";
+static skid65 = Crypt!"Gun9";
+static skid66 = Crypt!"zzyil";
+static skid67 = Crypt!"kristeno";
+static skid68 = Crypt!"maritibz";
+static skid69 = Crypt!"Gunup";
+static skid70 = Crypt!"kongenil";
+static skid71 = Crypt!"Ingezzy";
+static skid72 = Crypt!"Noraz";
+static skid73 = Crypt!"9botnet";
+static skid74 = Crypt!"bolpur";
+static skid75 = Crypt!"bolzzy";
+static skid76 = Crypt!"alekswZ";
+static skid77 = Crypt!"ilbotnet";
+static skid78 = Crypt!"odinaleks";
+static skid79 = Crypt!"ilo_o";
+static skid80 = Crypt!"bolsaurus";
+static skid81 = Crypt!"odinz";
+static skid82 = Crypt!"wZkongen";
+static skid83 = Crypt!"coz";
+static skid84 = Crypt!"botnetmariti";
+static skid85 = Crypt!"noil";
+static skid86 = Crypt!"coz";
+static skid87 = Crypt!"bokongen";
+static skid88 = Crypt!"Gunkongen";
+static skid89 = Crypt!"upz";
+static skid90 = Crypt!"kongenInge";
+static skid91 = Crypt!"zzyInge";
+static skid92 = Crypt!"Agent Pulidipper";
+static skid93 = Crypt!"Pebo";
+static skid94 = Crypt!"Gun9";
+static skid95 = Crypt!"wZkriste";
+static skid96 = Crypt!"kristebol";
+static skid97 = Crypt!"wZPe";
+static skid98 = Crypt!"noGun";
+static skid99 = Crypt!"bolmariti";
+static skidflag = Crypt!"{ imgay } ";
